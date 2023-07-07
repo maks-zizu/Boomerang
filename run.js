@@ -14,5 +14,6 @@ game.play();
 runInteractiveConsole(game);
 
 //  ff
+//  ff2
 
 runInteractiveConsole(game);
