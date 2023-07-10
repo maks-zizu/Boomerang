@@ -12,5 +12,6 @@ const game = new Game({
 // Запуск игры.
 game.play();
 runInteractiveConsole(game);
-
+//db_changes
+//db_db
 runInteractiveConsole(game);
