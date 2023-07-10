@@ -30,6 +30,7 @@ class Game {
   regenerateTrack() {
     // Сборка всего необходимого (герой, враг(и), оружие)
     // в единую структуру данных
+    // ghbh
 
     this.track = new Array(this.trackLength).fill('_');
     this.track[this.hero.position] = this.hero.skin;
