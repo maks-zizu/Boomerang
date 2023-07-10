@@ -65,7 +65,7 @@ class Hero {
 
   die() {
     this.skin = '';
-    console.log('🤝НА КАЖДОГО КРУТОГО БОЙЦА ЕЩЕ КРУЧЕ НАЙДЁТСЯ🤝(@ Фил)\n');
+    console.log('🤝 НА КАЖДОГО КРУТОГО БОЙЦА ЕЩЕ КРУЧЕ НАЙДЁТСЯ 🤝(@ Фил)\n');
     process.exit();
   }
 }
