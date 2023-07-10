@@ -5,7 +5,6 @@
 const keypress = require('keypress');
 
 // Управление.
-// Настроим соответствия нажатий на клавиши и действий в игре.
 
 const keyboard = {
   left: (game) => game.hero.moveLeft(),
@@ -15,8 +14,6 @@ const keyboard = {
   down: (game) => game.hero.moveDown(),
   up: (game) => game.hero.moveUp(),
 };
-
-// Какая-то функция.
 
 function runInteractiveConsole(game) {
   keypress(process.stdin);

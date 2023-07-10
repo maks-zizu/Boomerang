@@ -9,7 +9,7 @@ class View {
   async render() {
     console.clear();
 
-    const yourTeamName = 'Whales';
+    const yourTeamName = ' 🦩 Jays 🦩';
 
     // Тут всё рисуем.
     console.log(
@@ -22,11 +22,11 @@ class View {
       console.log(`\nТвой текущий лучший результат: ${this.game.hero.bigscore}\n`);
     }
     console.log('\n');
-    console.log(this.game.track.join(''));
+    console.log('🚙', this.game.track.join(''), '🧑', '🧑');
     console.log('\n');
-    console.log(this.game.track2.join(''));
+    console.log(this.game.track2.join(''), '🧑');
     console.log('\n');
-    console.log(`Created by "${yourTeamName}" with love\n`);
+    // console.log(`Created by "${yourTeamName}"\n`);
   }
 }
 

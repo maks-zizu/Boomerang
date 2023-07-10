@@ -4,8 +4,8 @@
 
 class Boomerang {
   constructor(trackLength) {
-    this.skin = '🦭';
-    this.position = undefined; // оставить так, бумеранг не будет видно в начале
+    this.skin = '💥';
+    this.position = undefined; 
     this.newPosition = undefined;
     this.trackLength = trackLength;
   }
