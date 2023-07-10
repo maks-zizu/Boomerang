@@ -1,15 +1,13 @@
 // подключение музыки
 // Наш герой.
 
-const player = require('play-sound')
+const player = require('play-sound')((opts = {}));
 
 class Hero {
-  constructor({
-    position, boomerang, newPosition, scores,
-  }) {
+  constructor({ position, boomerang, newPosition, scores }) {
     this.position = position;
     this.boomerang = boomerang;
-    this.skin = '🐳';
+    this.skin = '🧑🧨';
 
     this.newPosition = newPosition;
     this.name = 'New_Hero';
@@ -62,12 +60,12 @@ class Hero {
       this.boomerang.position = undefined;
     }
     this.boomerang.fly();
-    // player.play('./src/sounds/shot.wav');
+    player.play('./src/sounds/shot.mp3');
   }
 
   die() {
-    this.skin = '🍖';
-    console.log('MISHA DAVAI PO NOVOI!🥘\n');
+    this.skin = '';
+    console.log('🤝НА КАЖДОГО КРУТОГО БОЙЦА ЕЩЕ КРУЧЕ НАЙДЁТСЯ🤝(@ Фил)\n');
     process.exit();
   }
 }
