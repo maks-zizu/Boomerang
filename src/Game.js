@@ -1,4 +1,3 @@
-// const readlineSync = require('readline-sync');
 const player = require('play-sound')((opts = {}));
 const readlineSync = require('readline-sync');
 const Hero = require('./game-models/Hero');
@@ -31,13 +30,14 @@ class Game {
   regenerateTrack() {
     // Сборка всего необходимого (герой, враг(и), оружие)
     // в единую структуру данных
+    // ghbh
 
     this.track = new Array(this.trackLength).fill('_');
     this.track[this.hero.position] = this.hero.skin;
 
-    this.track = new Array(this.trackLength).fill(' ');
+    this.track = new Array(this.trackLength).fill('_');
 
-    this.track[this.enemy.position] = this.enemy.skin; 
+    this.track[this.enemy.position] = this.enemy.skin;
 
     if (this.hero.position >= 0) {
       this.track[this.hero.position] = this.hero.skin;
@@ -47,7 +47,7 @@ class Game {
       this.track[this.hero.boomerang.position] = this.hero.boomerang.skin;
     }
 
-    this.track2 = new Array(this.trackLength).fill(' ');
+    this.track2 = new Array(this.trackLength).fill('_');
 
     if (this.hero.newPosition >= 0) {
       this.track2[this.hero.newPosition] = this.hero.skin;
@@ -64,8 +64,11 @@ class Game {
   }
 
   play() {
+    player.play('./src/Ost.mp3');
     // во время запуска игры выводится форма регистрации и присваивается имя игрока
-    this.hero.name = readlineSync.question('Приветствуем Героя!\nВведи своё имя: ');
+    this.hero.name = readlineSync.question(
+      '🤜🏼 ЗА ВСЁ, ЧТО МЫ ДЕЛАЕМ, ОТВЕЧАТЬ БУДЕМ ВМЕСТЕ!(@Саша Белый) 🤛🏼\nВведи своё имя: '
+    );
     process.stdin.resume();
     if (!this.hero.name) {
       this.hero.name = 'Anonimus';
@@ -75,7 +78,7 @@ class Game {
       this.handleCollisions();
       this.regenerateTrack();
 
-      // Добавьте логику движения
+      //Логика движений
       this.enemy.moveLeft();
       this.enemy2.moveLeft();
 
@@ -98,21 +101,6 @@ class Game {
       defaults: { score: this.hero.scores },
       logging: false,
     });
-    // if (user[0].score <= this.hero.scores) {
-    //   this.hero.bigscore = this.hero.scores;
-    //   await User.update(
-    //     { score: this.hero.scores },
-    //     { where: { name: this.hero.name } },
-    //     { logging: false }
-    //   );
-    // } else {
-    //   this.hero.bigscore = user[0].score;
-    //   await User.update(
-    //     { score: this.hero.bigscore },
-    //     { where: { name: this.hero.name } },
-    //     { logging: false }
-    //   );
-    // }
   }
 
   async handleCollisions() {
@@ -124,18 +112,16 @@ class Game {
       this.hero.lifesCount -= 1;
 
       if (this.hero.lifesCount === 2) {
-        this.hero.lifes = 'Жизни: 💙💙🗿';
-        player.play('./src/sounds/death.mp3');
+        this.hero.lifes = 'Жизни: 💙💙💀';
         this.enemy.position = 27;
       }
       if (this.hero.lifesCount === 1) {
-        this.hero.lifes = 'Жизни: 💙🗿🗿';
+        this.hero.lifes = 'Жизни: 💙💀💀';
 
         this.enemy.position = 25;
       }
       if (this.hero.lifesCount === 0) {
-        this.hero.lifes = 'Жизни: 🗿🗿🗿';
-        player.play('./src/sounds/death.mp3');
+        this.hero.lifes = 'Жизни: 💀💀💀';
         await this.dieHero();
         this.hero.die();
       }
@@ -143,15 +129,13 @@ class Game {
     // бумеранг сталкивается с врагом
     if (this.boomerang.position >= this.enemy.position) {
       this.enemy.die();
-      player.play('./src/sounds/brue.mp3');
       this.hero.scores += 1;
-      // обнуляем позиции врага
+      // обнуляем  врага
       this.boomerang.position = undefined;
       this.enemy = new Enemy(this.trackLength); // Создаем нового врага
     }
 
     if (this.boomerang.newPosition >= this.enemy2.newPosition) {
-      player.play('./src/sounds/brue.mp3');
       this.enemy2.die();
       this.hero.scores += 1;
       this.boomerang.newPosition = undefined;
