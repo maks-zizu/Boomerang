@@ -129,7 +129,7 @@ class Game {
     if (this.boomerang.position >= this.enemy.position) {
       this.enemy.die();
       this.hero.scores += 1;
-      // обнуляем позиции врага
+      // обнуляем  врага
       this.boomerang.position = undefined;
       this.enemy = new Enemy(this.trackLength); // Создаем нового врага
     }
